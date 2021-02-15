@@ -1,0 +1,41 @@
+object dm: Tdm
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  Height = 247
+  Width = 364
+  object fdCon: TFDConnection
+    Params.Strings = (
+      'Database=C:\Users\LRC\Desktop\AppRenasoft\DB\DBAppRenasoft.db'
+      'User_Name=SYSDBA'
+      'DriverID=SQLite')
+    Connected = True
+    LoginPrompt = False
+    Left = 80
+    Top = 24
+  end
+  object FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink
+    Left = 296
+    Top = 32
+  end
+  object WProdutos: TFDQuery
+    IndexesActive = False
+    Connection = fdCon
+    SQL.Strings = (
+      'SELECT * FROM TBLPRODUTOS')
+    Left = 40
+    Top = 80
+    object WProdutosCODINT: TFDAutoIncField
+      FieldName = 'CODINT'
+    end
+    object WProdutosNOMEPROD: TStringField
+      FieldName = 'NOMEPROD'
+      Size = 60
+    end
+  end
+  object ClientDataSet1: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 32
+    Top = 144
+  end
+end

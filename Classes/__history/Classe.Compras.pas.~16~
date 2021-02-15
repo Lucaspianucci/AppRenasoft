@@ -1,0 +1,62 @@
+unit Classe.Compras;
+
+interface
+
+uses Classe.Produtos;
+
+type
+  TCompra = class(TProdutos)
+  private
+    FFValorTotalCompra: Currency;
+    FFDataCompra: String;
+    FFFormadePagamento: String;
+    FValorTotalCarrinho: Currency;
+    procedure SetFDataCompra(const Value: String);
+    procedure SetFValorTotalCompra(const Value: Currency);
+    procedure SetFFormadePagamento(const Value: String);
+    property FValorTotalCompra: Currency read FFValorTotalCompra
+      write SetFValorTotalCompra;
+    property FDataCompra: String read FFDataCompra write SetFDataCompra;
+    property FFormadePagamento: String read FFFormadePagamento
+      write SetFFormadePagamento;
+  public
+    constructor Create;
+    destructor Destroy; override;
+    class function new: TProdutos;
+  end;
+
+implementation
+
+{ TCompra }
+
+constructor TCompra.Create;
+begin
+
+end;
+
+destructor TCompra.Destroy;
+begin
+
+  inherited;
+end;
+
+class function TCompra.new: TProdutos;
+begin
+
+end;
+
+procedure TCompra.SetFDataCompra(const Value: String);
+begin
+  FFDataCompra := Value;
+end;
+
+procedure TCompra.SetFFormadePagamento(const Value: String);
+begin
+  FFFormadePagamento := Value;
+end;
+
+procedure TCompra.SetFValorTotalCompra(const Value: Currency);
+begin
+  FFValorTotalCompra := Value;
+end;
+end.

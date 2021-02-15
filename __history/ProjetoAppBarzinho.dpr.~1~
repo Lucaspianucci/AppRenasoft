@@ -1,0 +1,14 @@
+program ProjetoAppBarzinho;
+
+uses
+  System.StartUpCopy,
+  FMX.Forms,
+  frmApp in 'View\frmApp.pas' {frmAppBarzinho};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TfrmAppBarzinho, frmAppBarzinho);
+  Application.Run;
+end.

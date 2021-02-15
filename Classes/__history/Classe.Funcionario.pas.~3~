@@ -1,0 +1,19 @@
+unit Classe.Funcionario;
+
+interface
+  uses
+    Classe.Compras;
+  type
+    TFuncionario = class(TCompra)
+      private
+
+      public
+      property FNome: String;
+      property ValorGasto: Currency;
+
+
+    end;
+
+implementation
+
+end.

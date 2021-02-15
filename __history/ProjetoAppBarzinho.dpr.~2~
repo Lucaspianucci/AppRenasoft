@@ -1,0 +1,16 @@
+program ProjetoAppBarzinho;
+
+uses
+  System.StartUpCopy,
+  FMX.Forms,
+  frmApp in 'View\frmApp.pas' {frmAppBarzinho},
+  DataModule in 'Model\DataModule.pas' {dm: TDataModule};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TfrmAppBarzinho, frmAppBarzinho);
+  Application.CreateForm(Tdm, dm);
+  Application.Run;
+end.

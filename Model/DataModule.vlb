@@ -1,0 +1,12 @@
+﻿[ClientDataSet1]
+Coordinates=10,10,87,51
+
+[WProdutos]
+Coordinates=107,10,69,87
+
+[FDPhysSQLiteDriverLink1]
+Coordinates=194,1,142,33
+
+[fdCon]
+Coordinates=69,70,44,33
+

@@ -1,0 +1,26 @@
+object dm: Tdm
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  Height = 247
+  Width = 364
+  object fdCon: TFDConnection
+    LoginPrompt = False
+    Left = 80
+    Top = 24
+  end
+  object FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink
+    Left = 296
+    Top = 32
+  end
+  object WProdutos: TFDQuery
+    Connection = fdCon
+    Left = 40
+    Top = 80
+  end
+  object ClientDataSet1: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 32
+    Top = 144
+  end
+end
