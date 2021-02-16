@@ -17,6 +17,9 @@
     <Transaction>2021/02/13 09:17:39.000.638,C:\Users\LRC\Desktop\AppRenasoft\Classes\Classe.Compras.pas=C:\Users\LRC\Desktop\AppRenasoft\Unit1.pas</Transaction>
     <Transaction>2021/02/13 09:17:55.000.878,=C:\Users\LRC\Desktop\AppRenasoft\Unit1.pas</Transaction>
     <Transaction>2021/02/13 09:19:22.000.592,C:\Users\LRC\Desktop\AppRenasoft\Classes\Classe.Funcionario.pas=C:\Users\LRC\Desktop\AppRenasoft\Unit1.pas</Transaction>
+    <Transaction>2021/02/16 01:13:13.000.286,=C:\Users\LRC\Desktop\AppRenasoft\Unit1.pas</Transaction>
+    <Transaction>2021/02/16 01:13:25.000.242,C:\Users\LRC\Desktop\AppRenasoft\Classes\Classe.CompraItens.pas=C:\Users\LRC\Desktop\AppRenasoft\Unit1.pas</Transaction>
+    <Transaction>2021/02/16 08:59:39.000.672,C:\Users\LRC\Desktop\AppRenasoft\Classes\Classe.CompraItens.pas=</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
 		<NoProfile iOSSimulator="iPhone5" Android="" Android64=""/>

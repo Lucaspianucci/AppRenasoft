@@ -13,7 +13,8 @@ uses
   System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.EngExt,
   FMX.Bind.DBEngExt, Data.Bind.Components, Data.Bind.DBScope, Data.DB,
   FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
-  FMX.ListView, Classe.Produtos, Classe.Funcionario, Classe.Compras;
+  FMX.ListView, Classe.Produtos, Classe.Funcionario, Classe.Compras,
+  System.Generics.Collections, FMX.Memo;
 
 type
   TfrmAppBarzinho = class(TForm)
@@ -39,7 +40,6 @@ type
     Rectangle1: TRectangle;
     Layout1: TLayout;
     Label3: TLabel;
-    btnPesquisar: TSpeedButton;
     Rectangle2: TRectangle;
     edtPesquisa: TEdit;
     tabMenuInicial: TChangeTabAction;
@@ -62,18 +62,23 @@ type
     Image3: TImage;
     Label7: TLabel;
     Label8: TLabel;
+    layCardeneta: TLayout;
+    ICardeneta: TImage;
+    Memo1: TMemo;
     procedure btnPesquisarClick(Sender: TObject);
     procedure btnAcessarClick(Sender: TObject);
     procedure lvProdutosItemClick(const Sender: TObject;
       const AItem: TListViewItem);
-    procedure Label8Click(Sender: TObject);
     procedure edtPesquisaClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure Rectangle4Click(Sender: TObject);
     procedure imCarrinhoClick(Sender: TObject);
+    procedure ICardenetaClick(Sender: TObject);
+    procedure edtPesquisaChangeTracking(Sender: TObject);
 
   private
     { Private declarations }
-    tempListaProdutos: TProdutos;
+    Lista: TObjectList<TProdutos>;
   public
     { Public declarations }
   end;
@@ -81,6 +86,7 @@ type
 var
   frmAppBarzinho: TfrmAppBarzinho;
   TCompraADD: TCompra;
+  Compra: TCompra;
 
 implementation
 
@@ -111,7 +117,17 @@ begin
   dm.WProdutos.ParamByName('NOMEPRODUTO').AsString :=
     '%' + edtPesquisa.Text + '%';
   dm.WProdutos.Open();
+end;
 
+procedure TfrmAppBarzinho.edtPesquisaChangeTracking(Sender: TObject);
+begin
+  dm.fdCon.Open();
+  dm.WProdutos.SQL.Clear;
+  dm.WProdutos.SQL.Add('SELECT * FROM TBLPRODUTOS');
+  dm.WProdutos.SQL.Add(' WHERE NOMEPROD LIKE :NOMEPRODUTO');
+  dm.WProdutos.ParamByName('NOMEPRODUTO').AsString :=
+    '%' + edtPesquisa.Text + '%';
+  dm.WProdutos.Open();
 end;
 
 procedure TfrmAppBarzinho.edtPesquisaClick(Sender: TObject);
@@ -121,80 +137,62 @@ end;
 
 procedure TfrmAppBarzinho.FormCreate(Sender: TObject);
 begin
-  TCompraADD := TCompra.Create;
-  tempListaProdutos := TProdutos.Create;
+  Lista := TObjectList<TProdutos>.Create;
+  Compra := TCompra.Create('16/02/2021');
+end;
+
+procedure TfrmAppBarzinho.ICardenetaClick(Sender: TObject);
+begin
+  ICardeneta.Visible := false;
 end;
 
 procedure TfrmAppBarzinho.imCarrinhoClick(Sender: TObject);
+// ShowMessage(Compra.ExibirProdutosCompra(Lista));
+var
+  LContador: Integer;
+  LProdutosLista: String;
+  LValorProdutoLista: String;
 begin
-  ShowMessage(tempListaProdutos.ExibiInformacoesProduto(1));
+  ICardeneta.Visible := true;
+  for LContador := 0 to Pred(Lista.Count) do
+    LProdutosLista := (Lista[LContador].FNomeProduto);
+  Memo1.Lines.Strings[LContador] := LProdutosLista;
 end;
 
-procedure TfrmAppBarzinho.Label8Click(Sender: TObject);
-
+procedure TfrmAppBarzinho.lvProdutosItemClick(const Sender: TObject;
+  const AItem: TListViewItem);
+var
+  LCodigoItemLV: Integer;
+  LNomeProduto: String;
+  LProdutoADD: TProdutos;
+  LValorProduto: Currency;
 begin
-  MessageDlg('Tem certeza que Deseja Confirmar a compra?',
+  LCodigoItemLV := AItem.Index;
+  LNomeProduto := lvProdutos.Items[LCodigoItemLV].Text;
+  LValorProduto := StrToCurr(lvProdutos.Items[LCodigoItemLV].Detail);
+
+  MessageDlg('Deseja Comprar 1 ' + LNomeProduto + ' ?',
     System.UITypes.TMsgDlgType.mtConfirmation, [System.UITypes.TMsgDlgBtn.mbYes,
     System.UITypes.TMsgDlgBtn.mbNo], 0,
 
     procedure(const AResult: System.UITypes.TModalResult)
+    var
+      LContador: Integer;
     begin
       case AResult of
         mrYES:
           begin
-            try
-
-            finally
-
-            end;
+            Lista.Add(TProdutos.Create(LNomeProduto, LValorProduto, 1));
+            ShowMessage('Adicionado o Produto a Compra');
           end;
         mrNo:
         end;
       end);
     end;
 
-    procedure TfrmAppBarzinho.lvProdutosItemClick(const Sender: TObject;
-    const AItem: TListViewItem);
-    var
-      LCodigoItemLV: integer;
-      LNomeProduto: String;
-      LProdutoADD: TProdutos;
-      LValorProduto: Currency;
-
+    procedure TfrmAppBarzinho.Rectangle4Click(Sender: TObject);
     begin
-      LCodigoItemLV := AItem.Index;
-      LNomeProduto := lvProdutos.Items[LCodigoItemLV].Text;
-      LValorProduto := StrToCurr(lvProdutos.Items[LCodigoItemLV].Detail);
-
-      MessageDlg('DESEJA COMPRAR 1 ' + LNomeProduto + ' ?',
-        System.UITypes.TMsgDlgType.mtConfirmation,
-        [System.UITypes.TMsgDlgBtn.mbYes, System.UITypes.TMsgDlgBtn.mbNo], 0,
-
-        procedure(const AResult: System.UITypes.TModalResult)
-        begin
-          case AResult of
-            mrYES:
-              begin
-                LProdutoADD := TProdutos.Create;
-                try
-                  // Adicionado os atributos ao objeto criado
-                  LProdutoADD.FNomeProduto := LNomeProduto;
-                  LProdutoADD.FValorProduto := LValorProduto;
-
-                  // Exibindo no Label Total
-                  lTotalnoCarrinho.Text := 'Total no Carrinho: ' +
-                    FormatFloat('R$ ###,###,##0.00', (LValorProduto));
-
-                  // Inserir o Objeto e seus Atributos em uma Lista
-                  tempListaProdutos.AdicionarProduto(LProdutoADD);
-                finally
-//                  LProdutoADD.Free;
-                    //Teste01GIT
-                end;
-              end;
-            mrNo:
-            end;
-          end);
-        end;
+      Lista.Free;
+    end;
 
 end.

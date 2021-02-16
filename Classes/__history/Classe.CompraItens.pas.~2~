@@ -1,0 +1,12 @@
+unit Classe.CompraItens;
+
+interface
+  type
+    TCompraItens = class
+      private
+      public
+    end;
+
+implementation
+
+end.

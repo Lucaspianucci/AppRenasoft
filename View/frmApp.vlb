@@ -74,7 +74,7 @@ Coordinates=10,300,51,36
 Coordinates=570,232,60,36
 
 []
-Coordinates=493,346,50,33
+Coordinates=262,232,90,58
 Visible=True
 
 [dm.WProdutos]
@@ -82,23 +82,20 @@ Coordinates=696,110,99,36
 Visible=False
 
 [dm.ClientDataSet1]
-Coordinates=370,150,122,58
+Coordinates=720,150,122,58
 
 [DataSource1]
-Coordinates=420,90,89,58
+Coordinates=270,120,89,58
 Visible=True
 
 [BindingsList1]
 Coordinates=145,80,91,36
 
 [BindSourceDB1]
-Coordinates=210,50,106,146
+Coordinates=720,-20,106,146
 
 [edtPesquisa]
 Coordinates=159,10,85,58
-
-[btnPesquisar]
-Coordinates=262,232,90,58
 
 [tabListaProdutoss]
 Coordinates=168,135,118,36
@@ -120,14 +117,14 @@ Coordinates=126,190,54,36
 Coordinates=27,253,80,36
 
 [Rectangle4]
-Coordinates=324,87,80,36
+Coordinates=270,190,80,36
 Visible=True
 
 [Image3]
-Coordinates=126,87,57,58
+Coordinates=460,160,57,58
 
 [Label8]
-Coordinates=393,1,53,58
+Coordinates=500,10,53,58
 
 [Image2]
 Coordinates=393,309,57,58
@@ -137,4 +134,14 @@ Coordinates=530,401,60,36
 
 [Label7]
 Coordinates=393,167,53,58
+
+[ICardeneta]
+Coordinates=37,253,78,58
+
+[Memo1]
+Coordinates=309,349,57,58
+
+[layCardeneta]
+Coordinates=511,445,91,36
+Visible=True
 

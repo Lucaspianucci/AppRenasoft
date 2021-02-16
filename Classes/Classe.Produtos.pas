@@ -3,66 +3,51 @@ unit Classe.Produtos;
 interface
 
 uses
-  Classes, Contnrs, SysUtils;
+  Classes, SysUtils, System.Generics.Collections;
 
 type
   TProdutos = class
   private
-    FListaProdutos: TObjectList;
     FFNomeProduto: String;
     FFValorProduto: Currency;
     FFQuantidadeProduto: Integer;
     FFCategoria: String;
+    FIDProduto: integer;
+    FIDCompra: Integer;
     procedure SetFNomeProduto(const Value: String);
     procedure SetFValorProduto(const Value: Currency);
     procedure SetFQuantidadeProduto(const Value: Integer);
     procedure SetFCategoria(const Value: String);
+    procedure SetIDProduto(const Value: integer);
+    procedure SetIDCompra(const Value: Integer);
 
   public
-    constructor Create;
+    constructor Create(NomeProduto: String; ValorProduto: Currency; Quantidade: Integer);
     destructor Destroy; override;
     property FNomeProduto: String read FFNomeProduto write SetFNomeProduto;
     property FValorProduto: Currency read FFValorProduto write SetFValorProduto;
     property FQuantidadeProduto: Integer read FFQuantidadeProduto
       write SetFQuantidadeProduto;
     property FCategoria: String read FFCategoria write SetFCategoria;
-    procedure AdicionarProduto(FProduto: TProdutos);
-    function ExibiInformacoesProduto(Index: Integer): String;
-    function Count: Integer;
+    property IDProduto: integer read FIDProduto write SetIDProduto;
+    property IDCompra: Integer read FIDCompra write SetIDCompra;
   end;
 
 implementation
 
 { TProdutos }
 
-procedure TProdutos.AdicionarProduto(FProduto: TProdutos);
+constructor TProdutos.Create(NomeProduto: String; ValorProduto: Currency;
+  Quantidade: Integer);
 begin
-  FListaProdutos.Add(FProduto);
-end;
-
-function TProdutos.Count: Integer;
-begin
-  Result := FListaProdutos.Count;
-end;
-
-constructor TProdutos.Create;
-begin
-  inherited Create;
-  FListaProdutos := TObjectList.Create;
+  FNomeProduto := NomeProduto;
+  FValorProduto := ValorProduto;
+  FQuantidadeProduto := Quantidade;
 end;
 
 destructor TProdutos.Destroy;
 begin
-
   inherited;
-end;
-
-function TProdutos.ExibiInformacoesProduto(Index: Integer): String;
-var
-  i: Integer;
-begin
-  for i := 0 to FListaProdutos.Count - 1 do
-    Result := ((FListaProdutos.Items[i] as TProdutos).FFNomeProduto);
 end;
 
 procedure TProdutos.SetFCategoria(const Value: String);
@@ -89,6 +74,16 @@ begin
   if (Value = 0) then
     raise Exception.Create('Valor do Produto Invalido');
   FFValorProduto := Value;
+end;
+
+procedure TProdutos.SetIDCompra(const Value: Integer);
+begin
+  FIDCompra := Value;
+end;
+
+procedure TProdutos.SetIDProduto(const Value: integer);
+begin
+  FIDProduto := Value;
 end;
 
 end.
