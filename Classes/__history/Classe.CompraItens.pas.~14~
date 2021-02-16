@@ -1,0 +1,45 @@
+unit Classe.CompraItens;
+
+interface
+
+uses
+  Classe.Produtos;
+
+type
+  TCompraItens = class(TProdutos)
+  private
+    FIDCompraItens: integer;
+    FIDProduto: integer;
+    FIDCompra: integer;
+    procedure SetIDCompra(const Value: integer);
+    procedure SetIDCompraItens(const Value: integer);
+    procedure SetIDProduto(const Value: integer);
+
+  public
+    property IDCompraItens: integer read FIDCompraItens write SetIDCompraItens;
+    property IDCompra: integer read FIDCompra write SetIDCompra;
+    property IDProduto: integer read FIDProduto write SetIDProduto;
+    constructor Create(IDCompra: Integer; NomeProduto: String; ValorProduto: Currency;
+    Quantidade: Integer);
+  end;
+
+implementation
+
+{ TCompraItens }
+
+procedure TCompraItens.SetIDCompra(const Value: integer);
+begin
+  FIDCompra := Value;
+end;
+
+procedure TCompraItens.SetIDCompraItens(const Value: integer);
+begin
+  FIDCompraItens := Value;
+end;
+
+procedure TCompraItens.SetIDProduto(const Value: integer);
+begin
+  FIDProduto := Value;
+end;
+
+end.

@@ -2,7 +2,7 @@ unit Classe.Compras;
 
 interface
 
-uses Classe.Produtos, System.Generics.Collections, Classes, Contnrs;
+uses Classe.Produtos, System.Generics.Collections, Classes;
 
 type
   TCompra = class(TProdutos)

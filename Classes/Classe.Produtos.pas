@@ -3,7 +3,7 @@ unit Classe.Produtos;
 interface
 
 uses
-  Classes, Contnrs, SysUtils, System.Generics.Collections;
+  Classes, SysUtils, System.Generics.Collections;
 
 type
   TProdutos = class

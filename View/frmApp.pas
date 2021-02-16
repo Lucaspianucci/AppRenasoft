@@ -14,7 +14,7 @@ uses
   FMX.Bind.DBEngExt, Data.Bind.Components, Data.Bind.DBScope, Data.DB,
   FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
   FMX.ListView, Classe.Produtos, Classe.Funcionario, Classe.Compras,
-  System.Generics.Collections;
+  System.Generics.Collections, FMX.Memo;
 
 type
   TfrmAppBarzinho = class(TForm)
@@ -63,6 +63,9 @@ type
     Image3: TImage;
     Label7: TLabel;
     Label8: TLabel;
+    layCardeneta: TLayout;
+    ICardeneta: TImage;
+    Memo1: TMemo;
     procedure btnPesquisarClick(Sender: TObject);
     procedure btnAcessarClick(Sender: TObject);
     procedure lvProdutosItemClick(const Sender: TObject;
@@ -71,6 +74,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure Rectangle4Click(Sender: TObject);
     procedure imCarrinhoClick(Sender: TObject);
+    procedure ICardenetaClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -127,15 +131,28 @@ begin
   Compra := TCompra.Create('16/02/2021');
 end;
 
-procedure TfrmAppBarzinho.imCarrinhoClick(Sender: TObject);
+procedure TfrmAppBarzinho.ICardenetaClick(Sender: TObject);
 begin
-  ShowMessage(Compra.ExibirProdutosCompra(Lista));
+  ICardeneta.Visible := false;
+end;
+
+procedure TfrmAppBarzinho.imCarrinhoClick(Sender: TObject);
+// ShowMessage(Compra.ExibirProdutosCompra(Lista));
+var
+  LContador: Integer;
+  LProdutosLista: String;
+  LValorProdutoLista: String;
+begin
+  ICardeneta.Visible := true;
+  for LContador := 0 to Pred(Lista.Count) do
+    LProdutosLista := (Lista[LContador].FNomeProduto);
+  Memo1.Lines.Strings[LContador] := LProdutosLista;
 end;
 
 procedure TfrmAppBarzinho.lvProdutosItemClick(const Sender: TObject;
   const AItem: TListViewItem);
 var
-  LCodigoItemLV: integer;
+  LCodigoItemLV: Integer;
   LNomeProduto: String;
   LProdutoADD: TProdutos;
   LValorProduto: Currency;
@@ -150,7 +167,7 @@ begin
 
     procedure(const AResult: System.UITypes.TModalResult)
     var
-      LContador: integer;
+      LContador: Integer;
     begin
       case AResult of
         mrYES:
