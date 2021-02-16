@@ -13,7 +13,8 @@ uses
   System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.EngExt,
   FMX.Bind.DBEngExt, Data.Bind.Components, Data.Bind.DBScope, Data.DB,
   FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
-  FMX.ListView, Classe.Produtos, Classe.Funcionario, Classe.Compras;
+  FMX.ListView, Classe.Produtos, Classe.Funcionario, Classe.Compras,
+  System.Generics.Collections;
 
 type
   TfrmAppBarzinho = class(TForm)
@@ -66,14 +67,14 @@ type
     procedure btnAcessarClick(Sender: TObject);
     procedure lvProdutosItemClick(const Sender: TObject;
       const AItem: TListViewItem);
-    procedure Label8Click(Sender: TObject);
     procedure edtPesquisaClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure Rectangle4Click(Sender: TObject);
     procedure imCarrinhoClick(Sender: TObject);
 
   private
     { Private declarations }
-    tempListaProdutos: TProdutos;
+    Lista: TObjectList<TProdutos>;
   public
     { Public declarations }
   end;
@@ -81,6 +82,7 @@ type
 var
   frmAppBarzinho: TfrmAppBarzinho;
   TCompraADD: TCompra;
+  Compra: TCompra;
 
 implementation
 
@@ -121,80 +123,48 @@ end;
 
 procedure TfrmAppBarzinho.FormCreate(Sender: TObject);
 begin
-  TCompraADD := TCompra.Create;
-  tempListaProdutos := TProdutos.Create;
+  Lista := TObjectList<TProdutos>.Create;
+  Compra := TCompra.Create('16/02/2021');
 end;
 
 procedure TfrmAppBarzinho.imCarrinhoClick(Sender: TObject);
 begin
-  ShowMessage(tempListaProdutos.ExibiInformacoesProduto(1));
+  ShowMessage(Compra.ExibirProdutosCompra(Lista));
 end;
 
-procedure TfrmAppBarzinho.Label8Click(Sender: TObject);
-
+procedure TfrmAppBarzinho.lvProdutosItemClick(const Sender: TObject;
+  const AItem: TListViewItem);
+var
+  LCodigoItemLV: integer;
+  LNomeProduto: String;
+  LProdutoADD: TProdutos;
+  LValorProduto: Currency;
 begin
-  MessageDlg('Tem certeza que Deseja Confirmar a compra?',
+  LCodigoItemLV := AItem.Index;
+  LNomeProduto := lvProdutos.Items[LCodigoItemLV].Text;
+  LValorProduto := StrToCurr(lvProdutos.Items[LCodigoItemLV].Detail);
+
+  MessageDlg('DESEJA COMPRAR 1 ' + LNomeProduto + ' ?',
     System.UITypes.TMsgDlgType.mtConfirmation, [System.UITypes.TMsgDlgBtn.mbYes,
     System.UITypes.TMsgDlgBtn.mbNo], 0,
 
     procedure(const AResult: System.UITypes.TModalResult)
+    var
+      LContador: integer;
     begin
       case AResult of
         mrYES:
           begin
-            try
-
-            finally
-
-            end;
+            Lista.Add(TProdutos.Create(LNomeProduto, LValorProduto, 1));
           end;
         mrNo:
         end;
       end);
     end;
 
-    procedure TfrmAppBarzinho.lvProdutosItemClick(const Sender: TObject;
-    const AItem: TListViewItem);
-    var
-      LCodigoItemLV: integer;
-      LNomeProduto: String;
-      LProdutoADD: TProdutos;
-      LValorProduto: Currency;
-
+    procedure TfrmAppBarzinho.Rectangle4Click(Sender: TObject);
     begin
-      LCodigoItemLV := AItem.Index;
-      LNomeProduto := lvProdutos.Items[LCodigoItemLV].Text;
-      LValorProduto := StrToCurr(lvProdutos.Items[LCodigoItemLV].Detail);
-
-      MessageDlg('DESEJA COMPRAR 1 ' + LNomeProduto + ' ?',
-        System.UITypes.TMsgDlgType.mtConfirmation,
-        [System.UITypes.TMsgDlgBtn.mbYes, System.UITypes.TMsgDlgBtn.mbNo], 0,
-
-        procedure(const AResult: System.UITypes.TModalResult)
-        begin
-          case AResult of
-            mrYES:
-              begin
-                LProdutoADD := TProdutos.Create;
-                try
-                  // Adicionado os atributos ao objeto criado
-                  LProdutoADD.FNomeProduto := LNomeProduto;
-                  LProdutoADD.FValorProduto := LValorProduto;
-
-                  // Exibindo no Label Total
-                  lTotalnoCarrinho.Text := 'Total no Carrinho: ' +
-                    FormatFloat('R$ ###,###,##0.00', (LValorProduto));
-
-                  // Inserir o Objeto e seus Atributos em uma Lista
-                  tempListaProdutos.AdicionarProduto(LProdutoADD);
-                finally
-//                  LProdutoADD.Free;
-                    //Teste01GIT
-                end;
-              end;
-            mrNo:
-            end;
-          end);
-        end;
+      Lista.Free;
+    end;
 
 end.

@@ -2,33 +2,31 @@ unit Classe.Compras;
 
 interface
 
-uses Classe.Produtos;
+uses Classe.Produtos, System.Generics.Collections, Classes, Contnrs;
 
 type
   TCompra = class(TProdutos)
   private
-    FFDataCompra: String;
-    FFFormadePagamento: String;
-    procedure SetFDataCompra(const Value: String);
-    procedure SetFFormadePagamento(const Value: String);
-    property FDataCompra: String read FFDataCompra write SetFDataCompra;
-    property FFormadePagamento: String read FFFormadePagamento
-      write SetFFormadePagamento;
+    FIDCompra: Integer;
+    FDataCompra: String;
+    procedure SetIDCompra(const Value: Integer);
+    procedure SetDataCompra(const Value: String);
   public
-    constructor Create;
+    constructor Create(Data: String);
     destructor Destroy; override;
-    class function new: TProdutos;
     function ValorTotalCarrinho: Currency;
-
+    property IDCompra: Integer read FIDCompra write SetIDCompra;
+    property DataCompra: String read FDataCompra write SetDataCompra;
+    function ExibirProdutosCompra(Lista: TObjectList<TProdutos>): string;
   end;
 
 implementation
 
 { TCompra }
 
-constructor TCompra.Create;
+constructor TCompra.Create(Data: String);
 begin
-
+  Data := FDataCompra;
 end;
 
 destructor TCompra.Destroy;
@@ -37,19 +35,24 @@ begin
   inherited;
 end;
 
-class function TCompra.new: TProdutos;
+function TCompra.ExibirProdutosCompra(Lista: TObjectList<TProdutos>): string;
+var
+  LContador: Integer;
+  LProdutosLista: String;
 begin
-
+  for LContador := 0 to Pred(Lista.Count) do
+    LProdutosLista :=  (Lista[LContador].FNomeProduto);
+    Result:= LProdutosLista;
 end;
 
-procedure TCompra.SetFDataCompra(const Value: String);
+procedure TCompra.SetDataCompra(const Value: String);
 begin
-  FFDataCompra := Value;
+  FDataCompra := Value;
 end;
 
-procedure TCompra.SetFFormadePagamento(const Value: String);
+procedure TCompra.SetIDCompra(const Value: Integer);
 begin
-  FFFormadePagamento := Value;
+
 end;
 
 function TCompra.ValorTotalCarrinho: Currency;
