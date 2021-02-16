@@ -40,7 +40,6 @@ type
     Rectangle1: TRectangle;
     Layout1: TLayout;
     Label3: TLabel;
-    btnPesquisar: TSpeedButton;
     Rectangle2: TRectangle;
     edtPesquisa: TEdit;
     tabMenuInicial: TChangeTabAction;
@@ -75,6 +74,7 @@ type
     procedure Rectangle4Click(Sender: TObject);
     procedure imCarrinhoClick(Sender: TObject);
     procedure ICardenetaClick(Sender: TObject);
+    procedure edtPesquisaChangeTracking(Sender: TObject);
 
   private
     { Private declarations }
@@ -117,7 +117,17 @@ begin
   dm.WProdutos.ParamByName('NOMEPRODUTO').AsString :=
     '%' + edtPesquisa.Text + '%';
   dm.WProdutos.Open();
+end;
 
+procedure TfrmAppBarzinho.edtPesquisaChangeTracking(Sender: TObject);
+begin
+  dm.fdCon.Open();
+  dm.WProdutos.SQL.Clear;
+  dm.WProdutos.SQL.Add('SELECT * FROM TBLPRODUTOS');
+  dm.WProdutos.SQL.Add(' WHERE NOMEPROD LIKE :NOMEPRODUTO');
+  dm.WProdutos.ParamByName('NOMEPRODUTO').AsString :=
+    '%' + edtPesquisa.Text + '%';
+  dm.WProdutos.Open();
 end;
 
 procedure TfrmAppBarzinho.edtPesquisaClick(Sender: TObject);
@@ -161,7 +171,7 @@ begin
   LNomeProduto := lvProdutos.Items[LCodigoItemLV].Text;
   LValorProduto := StrToCurr(lvProdutos.Items[LCodigoItemLV].Detail);
 
-  MessageDlg('DESEJA COMPRAR 1 ' + LNomeProduto + ' ?',
+  MessageDlg('Deseja Comprar 1 ' + LNomeProduto + ' ?',
     System.UITypes.TMsgDlgType.mtConfirmation, [System.UITypes.TMsgDlgBtn.mbYes,
     System.UITypes.TMsgDlgBtn.mbNo], 0,
 
@@ -173,6 +183,7 @@ begin
         mrYES:
           begin
             Lista.Add(TProdutos.Create(LNomeProduto, LValorProduto, 1));
+            ShowMessage('Adicionado o Produto a Compra');
           end;
         mrNo:
         end;

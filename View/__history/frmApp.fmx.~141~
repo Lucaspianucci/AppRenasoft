@@ -127,8 +127,8 @@ object frmAppBarzinho: TfrmAppBarzinho
           Size.PlatformDefault = False
           TabOrder = 0
           object lvProdutos: TListView
-            ItemAppearanceClassName = 'TListItemRightDetailAppearance'
-            ItemEditAppearanceClassName = 'TListItemRightDetailDeleteAppearance'
+            ItemAppearanceClassName = 'TImageListItemBottomDetailAppearance'
+            ItemEditAppearanceClassName = 'TImageListItemBottomDetailShowCheckAppearance'
             HeaderAppearanceClassName = 'TListHeaderObjects'
             FooterAppearanceClassName = 'TListHeaderObjects'
             Align = Client
@@ -138,6 +138,9 @@ object frmAppBarzinho: TfrmAppBarzinho
             TabOrder = 0
             ParentShowHint = False
             ShowHint = True
+            ItemAppearanceObjects.ItemObjects.Text.TextColor = x00F01A1A
+            ItemAppearanceObjects.ItemObjects.Detail.Font.StyleExt = {00070000000000000004000000}
+            ItemAppearanceObjects.ItemObjects.Detail.TextColor = x00DD3939
             StyleLookup = 'listviewstyle'
             OnItemClick = lvProdutosItemClick
           end
@@ -587,6 +590,16 @@ object frmAppBarzinho: TfrmAppBarzinho
           Size.PlatformDefault = False
           XRadius = 6.000000000000000000
           YRadius = 6.000000000000000000
+          object btnPesquisar: TSpeedButton
+            Align = Right
+            Position.X = 196.000000000000000000
+            Size.Width = 32.000000000000000000
+            Size.Height = 32.000000000000000000
+            Size.PlatformDefault = False
+            StyleLookup = 'searcheditbutton'
+            Text = 'btnPesquisar'
+            OnClick = btnPesquisarClick
+          end
           object edtPesquisa: TEdit
             Touch.InteractiveGestures = [LongTap, DoubleTap]
             Align = Center
@@ -599,7 +612,6 @@ object frmAppBarzinho: TfrmAppBarzinho
             ParentShowHint = False
             ShowHint = True
             CharCase = ecUpperCase
-            OnChangeTracking = edtPesquisaChangeTracking
             OnClick = edtPesquisaClick
           end
         end

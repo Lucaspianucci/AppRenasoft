@@ -587,6 +587,16 @@ object frmAppBarzinho: TfrmAppBarzinho
           Size.PlatformDefault = False
           XRadius = 6.000000000000000000
           YRadius = 6.000000000000000000
+          object btnPesquisar: TSpeedButton
+            Align = Right
+            Position.X = 196.000000000000000000
+            Size.Width = 32.000000000000000000
+            Size.Height = 32.000000000000000000
+            Size.PlatformDefault = False
+            StyleLookup = 'searcheditbutton'
+            Text = 'btnPesquisar'
+            OnClick = btnPesquisarClick
+          end
           object edtPesquisa: TEdit
             Touch.InteractiveGestures = [LongTap, DoubleTap]
             Align = Center

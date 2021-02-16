@@ -2,7 +2,7 @@ unit Classe.Compras;
 
 interface
 
-uses Classe.Produtos, System.Generics.Collections, Classe.CompraItens, Classes, Contnrs, Dialogs;
+uses Classe.Produtos, System.Generics.Collections, Classes;
 
 type
   TCompra = class(TProdutos)
@@ -17,7 +17,7 @@ type
     function ValorTotalCarrinho: Currency;
     property IDCompra: Integer read FIDCompra write SetIDCompra;
     property DataCompra: String read FDataCompra write SetDataCompra;
-    function ExibirProdutosCompra(Lista: TObjectList): string;
+    function ExibirProdutosCompra(Lista: TObjectList<TProdutos>): string;
   end;
 
 implementation
@@ -26,7 +26,7 @@ implementation
 
 constructor TCompra.Create(Data: String);
 begin
- Data := FDataCompra;
+  Data := FDataCompra;
 end;
 
 destructor TCompra.Destroy;
@@ -37,10 +37,12 @@ end;
 
 function TCompra.ExibirProdutosCompra(Lista: TObjectList<TProdutos>): string;
 var
-  LContador: integer;
+  LContador: Integer;
+  LProdutosLista: String;
 begin
-   for LContador := 0 to Pred(Lista.Count) do
-    Result:= (Lista[LContador].);
+  for LContador := 0 to Pred(Lista.Count) do
+    LProdutosLista :=  (Lista[LContador].FNomeProduto);
+    Result:= LProdutosLista;
 end;
 
 procedure TCompra.SetDataCompra(const Value: String);

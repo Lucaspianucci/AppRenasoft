@@ -1,155 +1,51 @@
-object frmAppBarzinho: TfrmAppBarzinho
-  Left = 0
-  Top = 0
-  Caption = 'frmAppBarzinho'
-  ClientHeight = 441
-  ClientWidth = 282
-  FormFactor.Width = 320
-  FormFactor.Height = 480
-  FormFactor.Devices = [Desktop]
-  OnCreate = FormCreate
-  DesignerMasterStyle = 3
-  object TabControl1: TTabControl
-    Align = Client
-    FullSize = False
-    Size.Width = 282.000000000000000000
-    Size.Height = 441.000000000000000000
-    Size.PlatformDefault = False
-    TabHeight = 49.000000000000000000
-    TabIndex = 1
-    TabOrder = 0
-    TabPosition = None
+inherited frmAppBarzinho_XLgXhdpiTb: TfrmAppBarzinho_XLgXhdpiTb
+  ClientHeight = 1255
+  ClientWidth = 800
+  DesignerMasterStyle = 0
+  inherited TabControl1: TTabControl
+    Size.Width = 800.000000000000000000
+    Size.Height = 1255.000000000000000000
     Sizes = (
-      282s
-      441s
-      282s
-      441s
-      282s
-      441s)
-    object tabInicial: TTabItem
-      CustomIcon = <
-        item
-        end>
-      IsSelected = False
-      Size.Width = 8.000000000000000000
-      Size.Height = 8.000000000000000000
-      Size.PlatformDefault = False
-      StyleLookup = ''
-      TabOrder = 0
-      Text = 'tabInicial'
+      800s
+      1255s
+      800s
+      1255s
+      800s
+      1255s)
+    inherited tabInicial: TTabItem
       ExplicitSize.cx = 8.000000000000000000
       ExplicitSize.cy = 8.000000000000000000
-      object Rectangle1: TRectangle
-        Align = Client
-        Fill.Kind = Gradient
-        Fill.Gradient.Points = <
-          item
-            Color = xFFB3E8F9
-            Offset = 0.000000000000000000
-          end
-          item
-            Color = xFFD3F1FB
-            Offset = 0.388198763132095300
-          end
-          item
-            Color = xFF7ACFF5
-            Offset = 1.000000000000000000
-          end>
-        Fill.Gradient.StartPosition.X = 0.500000000000000000
-        Fill.Gradient.StartPosition.Y = 1.000000000000000000
-        Fill.Gradient.StopPosition.X = 0.499999970197677600
-        Fill.Gradient.StopPosition.Y = 0.000000000000000000
-        Size.Width = 282.000000000000000000
-        Size.Height = 441.000000000000000000
-        Size.PlatformDefault = False
-        object Layout1: TLayout
-          Align = Top
-          Size.Width = 282.000000000000000000
-          Size.Height = 113.000000000000000000
-          Size.PlatformDefault = False
-          TabOrder = 0
-          object Label3: TLabel
-            Align = Top
-            StyledSettings = [Family, Size, FontColor]
-            Margins.Top = 10.000000000000000000
-            Position.Y = 10.000000000000000000
-            Size.Width = 282.000000000000000000
-            Size.Height = 17.000000000000000000
-            Size.PlatformDefault = False
+      inherited Rectangle1: TRectangle
+        Size.Width = 800.000000000000000000
+        Size.Height = 1255.000000000000000000
+        inherited Layout1: TLayout
+          Size.Width = 800.000000000000000000
+          inherited Label3: TLabel
+            Size.Width = 800.000000000000000000
             TextSettings.Font.StyleExt = {00070000000000000004000000}
-            TextSettings.HorzAlign = Center
-            Text = 'CATEGORIAS'
-            TabOrder = 0
           end
         end
       end
     end
-    object tabListaProdutos: TTabItem
-      CustomIcon = <
-        item
-        end>
-      IsSelected = True
-      Size.Width = 8.000000000000000000
-      Size.Height = 8.000000000000000000
-      Size.PlatformDefault = False
-      StyleLookup = ''
-      TabOrder = 0
-      Text = 'tabListaProdutos'
+    inherited tabListaProdutos: TTabItem
       ExplicitSize.cx = 8.000000000000000000
       ExplicitSize.cy = 8.000000000000000000
-      object FundoLista: TRectangle
-        Align = Client
-        Fill.Kind = Gradient
-        Fill.Gradient.Points = <
-          item
-            Color = xFF7CD1EA
-            Offset = 0.000000000000000000
-          end
-          item
-            Color = xFFCFEDF7
-            Offset = 0.440993785858154300
-          end
-          item
-            Color = xFFA5D9EC
-            Offset = 1.000000000000000000
-          end>
-        Fill.Gradient.StartPosition.X = 0.500000000000000000
-        Fill.Gradient.StartPosition.Y = 1.000000000000000000
-        Fill.Gradient.StopPosition.X = 0.499999970197677600
-        Fill.Gradient.StopPosition.Y = 0.000000000000000000
-        Size.Width = 282.000000000000000000
-        Size.Height = 336.000000000000000000
-        Size.PlatformDefault = False
-        object layList: TLayout
-          Align = Client
-          Size.Width = 282.000000000000000000
-          Size.Height = 281.000000000000000000
-          Size.PlatformDefault = False
-          TabOrder = 0
-          object lvProdutos: TListView
-            ItemAppearanceClassName = 'TListItemRightDetailAppearance'
-            ItemEditAppearanceClassName = 'TListItemRightDetailDeleteAppearance'
-            HeaderAppearanceClassName = 'TListHeaderObjects'
-            FooterAppearanceClassName = 'TListHeaderObjects'
-            Align = Client
-            Size.Width = 282.000000000000000000
-            Size.Height = 281.000000000000000000
-            Size.PlatformDefault = False
-            TabOrder = 0
-            ParentShowHint = False
-            ShowHint = True
-            StyleLookup = 'listviewstyle'
-            OnItemClick = lvProdutosItemClick
+      inherited FundoLista: TRectangle
+        Size.Width = 800.000000000000000000
+        Size.Height = 1150.000000000000000000
+        inherited layList: TLayout
+          Size.Width = 800.000000000000000000
+          Size.Height = 1095.000000000000000000
+          inherited lvProdutos: TListView
+            Size.Width = 800.000000000000000000
+            Size.Height = 1095.000000000000000000
+            ItemAppearanceObjects.ItemObjects.Detail.Font.StyleExt = {00070000000000000004000000}
           end
         end
-        object pBaixo: TPanel
-          Align = Bottom
-          Position.Y = 281.000000000000000000
-          Size.Width = 282.000000000000000000
-          Size.Height = 55.000000000000000000
-          Size.PlatformDefault = False
-          TabOrder = 1
-          object imCarrinho: TImage
+        inherited pBaixo: TPanel
+          Position.Y = 1095.000000000000000000
+          Size.Width = 800.000000000000000000
+          inherited imCarrinho: TImage
             MultiResBitmap.Height = 225
             MultiResBitmap.Width = 225
             MultiResBitmap = <
@@ -542,260 +438,39 @@ object frmAppBarzinho: TfrmAppBarzinho
                   AE426082}
                 FileName = 'C:\Users\LRC\Desktop\AppRenasoft\IconeCarrinho.png'
               end>
-            Align = Left
-            Margins.Left = 10.000000000000000000
-            Position.X = 10.000000000000000000
-            Size.Width = 41.000000000000000000
-            Size.Height = 55.000000000000000000
-            Size.PlatformDefault = False
-            OnClick = imCarrinhoClick
           end
-          object lTotalnoCarrinho: TLabel
-            Align = Left
-            StyledSettings = [Family, FontColor]
-            Margins.Left = 10.000000000000000000
-            Position.X = 61.000000000000000000
-            Size.Width = 188.000000000000000000
-            Size.Height = 55.000000000000000000
-            Size.PlatformDefault = False
+          inherited lTotalnoCarrinho: TLabel
             TextSettings.Font.StyleExt = {00070000000000000004000000}
-            Text = 'Total no Carrinho:'
-            TabOrder = 1
           end
         end
       end
-      object pPesquisa: TPanel
-        Align = Top
-        HelpType = htKeyword
-        Size.Width = 282.000000000000000000
-        Size.Height = 49.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 1
-        object layPesquisa: TLayout
-          Align = Horizontal
-          Size.Width = 282.000000000000000000
-          Size.Height = 49.000000000000000000
-          Size.PlatformDefault = False
-          TabOrder = 0
-        end
-        object Rectangle2: TRectangle
-          Align = Center
-          Fill.Kind = None
-          Margins.Left = 20.000000000000000000
-          Size.Width = 228.000000000000000000
-          Size.Height = 33.000000000000000000
-          Size.PlatformDefault = False
-          XRadius = 6.000000000000000000
-          YRadius = 6.000000000000000000
-          object edtPesquisa: TEdit
-            Touch.InteractiveGestures = [LongTap, DoubleTap]
-            Align = Center
-            StyleLookup = 'transparentedit'
-            TabOrder = 1
-            Hint = 'Digite para Pesquisar...'
-            Size.Width = 168.000000000000000000
-            Size.Height = 32.000000000000000000
-            Size.PlatformDefault = False
-            ParentShowHint = False
-            ShowHint = True
-            CharCase = ecUpperCase
-            OnChangeTracking = edtPesquisaChangeTracking
-            OnClick = edtPesquisaClick
-          end
+      inherited pPesquisa: TPanel
+        Size.Width = 800.000000000000000000
+        inherited layPesquisa: TLayout
+          Size.Width = 800.000000000000000000
         end
       end
-      object Layout3: TLayout
-        Align = Bottom
-        Position.Y = 385.000000000000000000
-        Size.Width = 282.000000000000000000
-        Size.Height = 56.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 2
-        object Rectangle3: TRectangle
-          Fill.Color = claWhite
-          Margins.Left = 10.000000000000000000
-          Margins.Top = 10.000000000000000000
-          Margins.Bottom = 10.000000000000000000
-          Position.X = 10.000000000000000000
-          Position.Y = 10.000000000000000000
-          Size.Width = 121.000000000000000000
-          Size.Height = 36.000000000000000000
-          Size.PlatformDefault = False
-          XRadius = 6.000000000000000000
-          YRadius = 6.000000000000000000
-          object Image3: TImage
+      inherited Layout3: TLayout
+        Position.Y = 1199.000000000000000000
+        Size.Width = 800.000000000000000000
+        inherited Rectangle3: TRectangle
+          inherited Image3: TImage
             MultiResBitmap.Height = 24
             MultiResBitmap.Width = 24
-            MultiResBitmap = <
-              item
-                Width = 24
-                Height = 24
-                PNG = {
-                  89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
-                  F8000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
-                  04FD49444154484B8D565B48945B185DF3CFC5B979C9194FDE523BEAC95B0687
-                  CE498363C8A12BF5D21D227AA888A0A7DE0AA21E2308A27AAA5E238AA0878A2E
-                  8FE7488905526AE6A593B7A399E3651C677466FE715ADFF61F2FA3420B7E903D
-                  7B7FEBFBD6B7BEBD35C509AC82A8DF8F6F2F5FC2F7E60D420303C6EA1C9CEBD6
-                  C1535B8B9CDDBB614D4B33569763450209FCDFDDBB1878F4089EF27238B2B361
-                  75BBA187C300B79B6D3644272731FDFD3BC63A3B9177F8308A4F9F5E91681981
-                  BFB5154DC78E217BCB16D8737210E8ED45647414F1991940D7199FDB676761B2
-                  586071B9E0622591E9690C3737A3E6FE7DA457561A91E6B084A0FFE143745EBD
-                  8AF5070EC0FFE50BC243438847A32A609404711248053099606115EA6F7EE694
-                  14A4B3D2FEB76F5176E1020A8E1C31222E2290CCDF1F3F8E827DFB30F1E91362
-                  13139865C010B30F8E8FC34289D2ABAAD421D91B0B856067054EAE9B4828885B
-                  ADF0F5F7A3FEC58BF94A148168DEB0772F0A77ECC0E8870F2A789C590BC12C75
-                  2DBF7811DEAD5BD581047CCCB6FDFA758C3735217DCD1A582999C01F08C09499
-                  89BF5FBF563DD164511AEA2D2BC304654904573AB3381B25726465A9C38BE1A5
-                  83FE7AFC1815972E619C55DAF2F3D59934A713A1C1417433A64011885BA4A111
-                  6AAEB29666C6628A48A75B5ACF9E45906E590925744FD5952B18E5D94C5669E6
-                  5AAADD8EAE7BF7D4EFDA37EAE516B7F4F4A8268AE6228B99994846F20949DB99
-                  33087674A843C92839750ACEC2428459B1850DB7B36A9DB20F728634D1D25D50
-                  80C8D8980A36CD1F4ACE9D43D5EDDBCA86E2925936542A78B77D3B021F3F1A61
-                  97A2F8E4490CB11FEE0D1B00CA6CE29991C64668FEB636D8BD5EC43944B14804
-                  315691B36B175CA5A5A8BC750B33D433D4DD0D9D4ED2595DF39E3D986A6931C2
-                  2E20976782C3C3B01715C16C36C3CEC4FC74A3EA816E0C91102C1E1437BDFDE7
-                  F3E7B06664282B9A350D71BAA485560EAE402267450187C7032B49048A404641
-                  8D837C4948DDB4097FD072365A5123817CF1A929B4EFDF8F10E721199A0CA14C
-                  3909249A22D0B820131B62A345B264A45657E3779A4148A47CA90424E9E21D34
-                  BD68BF0CA89B724BEEB24FA04959619F0F014367D09E43EC7E32DC1B37A2FAE9
-                  D305127E5A30885EDE5BE1F676FCFFEA9572A399CDD5986C94BF4B6CCD43EFFA
-                  E9100B6D2903AFB11FDD868793E12249C593278A442430B3728D01074F9C40CF
-                  CD9B28E4051965A252E10CA5CAAAA981268E9961E3D2C45ED248DE8CA30D0DF3
-                  93980C27EFA3524E708244E9CDA40AA84236A739FEF52B74DA3D4663E4EDDC39
-                  D783FCA347018743F95E5D0FE294CB975725715454A0E8C103E52EB983E473F0
-                  9CFEEC1952187C8C32FFCAB9102802792CA698C12FF5F5AA0A8D96CDCACB43C7
-                  8D1BF8F7D0218C70189331C9611AE41D15A71C52858D37A99084A8FF241FA8DF
-                  0C8285EB9A6E68E43D6EE1C045FBFA941D3DDBB621CAAA7C9F3F8397C6FC8C88
-                  5BA4C9C57575C866223A67C5C1C40294F71D87B18E9564B04AC13C81A08F0FCE
-                  FBF3E7016E72899F19C4999B8B8CCD9B6159BB163A07D1446207496D9422DAD5
-                  C5437DB0F3EC14336FA375ABAE5DC3FA8307E702124B080452C93F7CD1E4CA75
-                  532A87682CCDE40B96C24B503595FB3492C95A8CC747F8778016AD65CF129927
-                  B08C40200FBA34B8EBCE1D44F8B0A7700B1F48D80CD7887CBA61C5081B2D0D15
-                  CD7FEAD15F0C21922B576EC5109F42314062B33CF65EFA5CACB8FABF2DC00FC0
-                  53895F0A476BD40000000049454E44AE426082}
-                FileName = 
-                  'C:\Users\LRC\Desktop\ProjetoBatatao\Icones\IconesProj\Cancel\Can' +
-                  'cel_24x24.bmp'
-              end>
-            Align = Left
-            Margins.Left = 5.000000000000000000
-            Margins.Top = 5.000000000000000000
-            Margins.Bottom = 5.000000000000000000
-            Position.X = 5.000000000000000000
-            Position.Y = 5.000000000000000000
-            Size.Width = 33.000000000000000000
-            Size.Height = 26.000000000000000000
-            Size.PlatformDefault = False
-            object Label7: TLabel
-              Align = Left
-              StyledSettings = [Family, Style, FontColor]
-              Margins.Left = 35.000000000000000000
-              Position.X = 35.000000000000000000
-              Size.Width = 82.000000000000000000
-              Size.Height = 26.000000000000000000
-              Size.PlatformDefault = False
-              TextSettings.Font.Size = 14.000000000000000000
-              Text = 'Cancelar'
-              TabOrder = 0
-            end
           end
         end
-        object Rectangle4: TRectangle
-          Align = Right
-          Fill.Color = claWhite
-          Margins.Left = 10.000000000000000000
-          Margins.Top = 10.000000000000000000
-          Margins.Right = 10.000000000000000000
-          Margins.Bottom = 10.000000000000000000
-          Position.X = 151.000000000000000000
-          Position.Y = 10.000000000000000000
-          Size.Width = 121.000000000000000000
-          Size.Height = 36.000000000000000000
-          Size.PlatformDefault = False
-          XRadius = 6.000000000000000000
-          YRadius = 6.000000000000000000
-          OnClick = Rectangle4Click
-          object Image2: TImage
+        inherited Rectangle4: TRectangle
+          Position.X = 669.000000000000000000
+          inherited Image2: TImage
             MultiResBitmap.Height = 24
             MultiResBitmap.Width = 24
-            MultiResBitmap = <
-              item
-                Width = 24
-                Height = 24
-                PNG = {
-                  89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
-                  F8000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
-                  044649444154484BAD955D6C536518C77F3D6D4FBFD6ADB08FAE1FDB3A366682
-                  3223201A31A2383745512608647021CC0BC3CDAE8C3A484C4C345113B304153F
-                  328778A18B179225804422880ED46C01C7D80A63ACEBBA8D6E63EBFAB1B5DDBA
-                  F9F6504C700E71F03B3937E73CE7F9BFE779FFCFF3AA6605DC0502F1004D9E26
-                  FA225E5CE642B6176F579EDF158164F2B2C365C82A0399BA2CC2D341C2890007
-                  D61EBC3B02C9E4565D1E2B335733313DC18C48792DEE6768CA8B948A59304DBD
-                  4D0C44065995BD5A94C7C751EF714E0D36331E9BA065B8E5CE0492A5A9395DC3
-                  96C21DC41371DA46DB5149B368D56A34921A59ADBD338177CFBEC3FD8B57B058
-                  BF98CE71370971E9B43276732EC1C408E58EF2850BB48DB6D1D8DD48B9F319C6
-                  E263F44F0E206B35D84C39C81A0DA35383BC56FAC6C20576FFBA9BAD453B9811
-                  5767D08D4EA3C5A24F27C794C5E5503BBB4AAAB11BED0B13D8DFF109068D91A5
-                  961206A2FDC466A318643D79663B81A9118ACC2EAA847892FF2DE00D7BD9D7B1
-                  8F8D859B989C89D033E1412FCBD8D2AE97C617EEE1AD07DE4E45A7040231D114
-                  EE03D4B5D5716EE49CF2623EF6B6ECE131DB136884532E043B883189A401A34E
-                  CF856B67A95E5A8D4D94E6065232E1B26F96D1D0F9353FF41EE7B9A31BA83C56
-                  A958F09F34FB9B710BB7DC9755AAACBC3FEE5392DB4D5646A3C3E41B9D6C5D52
-                  958ABE8ECA75D035BBD95545AEC941447461D2C3A7FC3F7175D2C7890D27B0C8
-                  1625703C3E4ED99175AC773D4F96319B3363A78529A7C9355AC9D09A69F5FD41
-                  FD9AAFC835D894F81B489EA01787C9897BEC12873DC7F8B9BF199BBE009B219F
-                  8A23154ACD937CE1FE9C62B1A90EB3034FB407D433641A2D626139740C9DE7E5
-                  A25D739227912CC674266626094D4514CBB9035D9CF6FF8E56328AD539A9385A
-                  4EE3956F39D0D5C023F63584124146A68730EB4CE4A539199B1CC1A173F252E1
-                  B654CA9B916A96D770C8FB1D56631689D904A1E990725F0E750B6F9B28CF5FCF
-                  9E965A5E58F22206AD812BD16EA5A19C26BBE2FDAEAB5DBC59BA37956E2ECA34
-                  DD7972273FF69DA428ED5E228930C3B161613D1D8B0C19DCB3A858FC49362596
-                  62FA633EBC710F998645E489B2FEE63943A57D339B5C5B52E9E6A2D8B4E1F106
-                  2AF2D70967749265C8A4203D4F1956C94DEC9BE8637C3AC0606C105FBC4FFC85
-                  5ED8D0C650D84F8E26F796C993FCDD68F56BEB79B6E0293C1137996278E59B9D
-                  8A8824A9F0C787B8289E2727A5CD6045AD52D139E0E6F5E5B5A9AFE7E7A64EDE
-                  FFE8A754E43D4947A0950CD98C33CDA134945AAD422D49A4CBE9CADDEA6DA54A
-                  8C68AB2137F5E5FCFCEB89F6E5A57A651CACB03E243654CBF8EC28697A2325E9
-                  C504A301A2A138EFAFFA30157D6BE63D320FF57ECF07EDEFB1D2F6B0326B6459
-                  8345271AAAB795BA073F16ABB7A6226FCDBCC36E6341A5B05F2D9D237F825843
-                  9AB06CFBE079B689AEBFDDE449FEF3D0FFC57F8ACF2E7E443411E569C77A5E29
-                  7935F5E67680BF0071AAA8CB8323AF880000000049454E44AE426082}
-                FileName = 
-                  'C:\Users\LRC\Desktop\ProjetoBatatao\Icones\IconesProj\Check\Chec' +
-                  'k_24x24.bmp'
-              end>
-            Align = Left
-            Margins.Left = 5.000000000000000000
-            Margins.Top = 5.000000000000000000
-            Margins.Bottom = 5.000000000000000000
-            Position.X = 5.000000000000000000
-            Position.Y = 5.000000000000000000
-            Size.Width = 33.000000000000000000
-            Size.Height = 26.000000000000000000
-            Size.PlatformDefault = False
-            object Label8: TLabel
-              Align = Left
-              StyledSettings = [Family, Style, FontColor]
-              Margins.Left = 35.000000000000000000
-              Position.X = 35.000000000000000000
-              Size.Width = 82.000000000000000000
-              Size.Height = 26.000000000000000000
-              Size.PlatformDefault = False
-              TextSettings.Font.Size = 14.000000000000000000
-              Text = 'Confirmar'
-              TabOrder = 0
-            end
           end
         end
       end
-      object layCardeneta: TLayout
-        Align = Client
-        Size.Width = 282.000000000000000000
-        Size.Height = 336.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 3
-        object ICardeneta: TImage
+      inherited layCardeneta: TLayout
+        Size.Width = 800.000000000000000000
+        Size.Height = 1150.000000000000000000
+        inherited ICardeneta: TImage
           MultiResBitmap.Height = 563
           MultiResBitmap.Width = 443
           MultiResBitmap = <
@@ -1472,121 +1147,22 @@ object frmAppBarzinho: TfrmAppBarzinho
                 49454E44AE426082}
               FileName = 'C:\Users\LRC\Desktop\AppRenasoft\card.png'
             end>
-          Align = Client
-          Size.Width = 282.000000000000000000
-          Size.Height = 336.000000000000000000
-          Size.PlatformDefault = False
-          Visible = False
-          OnClick = ICardenetaClick
-          object Memo1: TMemo
-            Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
-            DataDetectorTypes = []
-            Lines.Strings = (
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              ''
-              '')
-            ReadOnly = True
-            Align = Center
-            Size.Width = 161.000000000000000000
-            Size.Height = 239.000000000000000000
-            Size.PlatformDefault = False
-            TabOrder = 0
-            Viewport.Width = 148.000000000000000000
-            Viewport.Height = 231.000000000000000000
+          inherited Memo1: TMemo
+            Viewport.Width = 161.000000000000000000
+            Viewport.Height = 239.000000000000000000
           end
         end
       end
     end
-    object tabEntrarSistema: TTabItem
-      CustomIcon = <
-        item
-        end>
-      IsSelected = False
-      Size.Width = 8.000000000000000000
-      Size.Height = 8.000000000000000000
-      Size.PlatformDefault = False
-      StyleLookup = ''
-      TabOrder = 0
-      Text = 'tabEntrarSistema'
+    inherited tabEntrarSistema: TTabItem
       ExplicitSize.cx = 8.000000000000000000
       ExplicitSize.cy = 8.000000000000000000
-      object fundoEntrar: TRectangle
-        Align = Client
-        Fill.Kind = Gradient
-        Fill.Gradient.Points = <
-          item
-            Color = xFFB3E8F9
-            Offset = 0.093167699873447420
-          end
-          item
-            Color = xFFD8EDF4
-            Offset = 0.422360241413116500
-          end
-          item
-            Color = xFF8FD1EE
-            Offset = 0.819875776767730700
-          end>
-        Fill.Gradient.StartPosition.X = 0.500000000000000000
-        Fill.Gradient.StartPosition.Y = 1.000000000000000000
-        Fill.Gradient.StopPosition.X = 0.499999970197677600
-        Fill.Gradient.StopPosition.Y = 0.000000000000000000
-        Size.Width = 282.000000000000000000
-        Size.Height = 441.000000000000000000
-        Size.PlatformDefault = False
+      inherited fundoEntrar: TRectangle
+        Size.Width = 800.000000000000000000
+        Size.Height = 1255.000000000000000000
       end
-      object Layout2: TLayout
-        Align = Center
-        Size.Width = 268.000000000000000000
-        Size.Height = 395.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 1
-        object Image1: TImage
+      inherited Layout2: TLayout
+        inherited Image1: TImage
           MultiResBitmap.Height = 467
           MultiResBitmap.Width = 534
           MultiResBitmap = <
@@ -7661,190 +7237,17 @@ object frmAppBarzinho: TfrmAppBarzinho
                 030303838B0B22FF3FFCC1EB376E233C050000000049454E44AE426082}
               FileName = 'C:\Users\LRC\Downloads\LogoInicial-removebg-preview(1).png'
             end>
-          Align = Top
-          Position.Y = 37.000000000000000000
-          Size.Width = 268.000000000000000000
-          Size.Height = 113.000000000000000000
-          Size.PlatformDefault = False
         end
-        object Label2: TLabel
-          Align = Top
-          StyledSettings = [Family, FontColor]
-          Margins.Top = 10.000000000000000000
-          Position.Y = 160.000000000000000000
-          Size.Width = 268.000000000000000000
-          Size.Height = 17.000000000000000000
-          Size.PlatformDefault = False
-          TextSettings.Font.Size = 20.000000000000000000
+        inherited Label2: TLabel
           TextSettings.Font.StyleExt = {00070000000000000004000000}
-          TextSettings.HorzAlign = Center
-          Text = 'Usu'#225'rio:'
-          TabOrder = 3
         end
-        object EUsuario: TRectangle
-          Align = Top
-          Fill.Color = claWhite
-          Margins.Left = 20.000000000000000000
-          Margins.Top = 10.000000000000000000
-          Margins.Right = 20.000000000000000000
-          Position.X = 20.000000000000000000
-          Position.Y = 187.000000000000000000
-          Size.Width = 228.000000000000000000
-          Size.Height = 37.000000000000000000
-          Size.PlatformDefault = False
-          XRadius = 6.000000000000000000
-          YRadius = 6.000000000000000000
-          object edUsuario: TEdit
-            Touch.InteractiveGestures = [LongTap, DoubleTap]
-            Align = Center
-            StyleLookup = 'transparentedit'
-            TabOrder = 0
-            Text = 'LUCA'
-            Hint = 'Insira seu Us'#250'ario'
-            Size.Width = 186.000000000000000000
-            Size.Height = 32.000000000000000000
-            Size.PlatformDefault = False
-            ParentShowHint = False
-            ShowHint = True
-            CharCase = ecUpperCase
-          end
-        end
-        object Label4: TLabel
-          Align = Top
-          StyledSettings = [Family, FontColor]
-          Margins.Top = 10.000000000000000000
-          Position.Y = 234.000000000000000000
-          Size.Width = 268.000000000000000000
-          Size.Height = 17.000000000000000000
-          Size.PlatformDefault = False
-          TextSettings.Font.Size = 20.000000000000000000
+        inherited Label4: TLabel
           TextSettings.Font.StyleExt = {00070000000000000004000000}
-          TextSettings.HorzAlign = Center
-          Text = 'Senha:'
-          TabOrder = 1
         end
-        object ESenha: TRectangle
-          Align = Top
-          Fill.Color = claWhite
-          Margins.Left = 20.000000000000000000
-          Margins.Top = 10.000000000000000000
-          Margins.Right = 20.000000000000000000
-          Position.X = 20.000000000000000000
-          Position.Y = 261.000000000000000000
-          Size.Width = 228.000000000000000000
-          Size.Height = 37.000000000000000000
-          Size.PlatformDefault = False
-          XRadius = 6.000000000000000000
-          YRadius = 6.000000000000000000
-          object edSenha: TEdit
-            Touch.InteractiveGestures = [LongTap, DoubleTap]
-            Align = Center
-            StyleLookup = 'transparentedit'
-            TabOrder = 0
-            Password = True
-            Text = '123'
-            Hint = 'Insira seu Us'#250'ario'
-            Size.Width = 186.000000000000000000
-            Size.Height = 32.000000000000000000
-            Size.PlatformDefault = False
-            ParentShowHint = False
-            ShowHint = True
-            CharCase = ecUpperCase
-          end
-        end
-        object Label6: TLabel
-          Align = Top
-          StyledSettings = [FontColor]
-          Margins.Top = 10.000000000000000000
-          Margins.Bottom = 10.000000000000000000
-          Position.Y = 10.000000000000000000
-          Size.Width = 268.000000000000000000
-          Size.Height = 17.000000000000000000
-          Size.PlatformDefault = False
-          TextSettings.Font.Family = 'Aharoni'
-          TextSettings.Font.Size = 14.000000000000000000
+        inherited Label6: TLabel
           TextSettings.Font.StyleExt = {00070000000000000004000000}
-          TextSettings.HorzAlign = Center
-          Text = 'BARZINHO DA CONFIAN'#199'A'
-          TabOrder = 2
-        end
-        object btnAcessar: TSpeedButton
-          Align = Center
-          Margins.Left = 20.000000000000000000
-          Margins.Top = 10.000000000000000000
-          Margins.Right = 20.000000000000000000
-          Size.Width = 167.000000000000000000
-          Size.Height = 42.000000000000000000
-          Size.PlatformDefault = False
-          StyleLookup = 'segmentedbuttonright'
-          Text = 'ACESSAR'
-          OnClick = btnAcessarClick
         end
       end
     end
-  end
-  object tab: TActionList
-    Left = 220
-    Top = 96
-    object tabMenuInicial: TChangeTabAction
-      Category = 'Tab'
-      Tab = tabInicial
-    end
-    object tabListaProdutoss: TChangeTabAction
-      Category = 'Tab'
-      Tab = tabListaProdutos
-    end
-  end
-  object DataSource1: TDataSource
-    DataSet = dm.ClientDataSet1
-    Left = 224
-    Top = 218
-  end
-  object BindingsList1: TBindingsList
-    Methods = <>
-    OutputConverters = <>
-    Left = 220
-    Top = 53
-    object LinkFillControlToField1: TLinkFillControlToField
-      Category = 'Quick Bindings'
-      Track = True
-      FillDataSource = BindSourceDB1
-      FillDisplayFieldName = 'NOMEPROD'
-      AutoFill = True
-      FillExpressions = <>
-      FillHeaderExpressions = <>
-      FillBreakGroups = <>
-    end
-    object LinkFillControlToField2: TLinkFillControlToField
-      Category = 'Quick Bindings'
-      Track = True
-      FillDataSource = BindSourceDB1
-      FillDisplayFieldName = 'NOMEPROD'
-      AutoFill = True
-      FillExpressions = <>
-      FillHeaderExpressions = <>
-      FillBreakGroups = <>
-    end
-    object LinkFillControlToField3: TLinkFillControlToField
-      Category = 'Quick Bindings'
-      Control = lvProdutos
-      Track = True
-      FillDataSource = BindSourceDB1
-      FillDisplayFieldName = 'NOMEPROD'
-      AutoFill = True
-      FillExpressions = <
-        item
-          SourceMemberName = 'VALORPROD'
-          ControlMemberName = 'Detail'
-        end>
-      FillHeaderExpressions = <>
-      FillBreakGroups = <>
-    end
-  end
-  object BindSourceDB1: TBindSourceDB
-    DataSet = dm.WProdutos
-    ScopeMappings = <>
-    Left = 224
-    Top = 152
   end
 end

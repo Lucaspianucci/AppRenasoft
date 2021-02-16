@@ -6,7 +6,6 @@ object dm: Tdm
   object fdCon: TFDConnection
     Params.Strings = (
       'DriverID=SQLite')
-    Connected = True
     LoginPrompt = False
     Left = 80
     Top = 24
@@ -18,7 +17,7 @@ object dm: Tdm
   object WProdutos: TFDQuery
     IndexesActive = False
     Connection = fdCon
-    Left = 32
+    Left = 40
     Top = 80
     object WProdutosCODINT: TFDAutoIncField
       FieldName = 'CODINT'

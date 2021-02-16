@@ -74,6 +74,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure Rectangle4Click(Sender: TObject);
     procedure imCarrinhoClick(Sender: TObject);
+    procedure ICardenetaClick(Sender: TObject);
+    procedure edtPesquisaChange(Sender: TObject);
 
   private
     { Private declarations }
@@ -116,7 +118,17 @@ begin
   dm.WProdutos.ParamByName('NOMEPRODUTO').AsString :=
     '%' + edtPesquisa.Text + '%';
   dm.WProdutos.Open();
+end;
 
+procedure TfrmAppBarzinho.edtPesquisaChange(Sender: TObject);
+begin
+  dm.fdCon.Open();
+  dm.WProdutos.SQL.Clear;
+  dm.WProdutos.SQL.Add('SELECT * FROM TBLPRODUTOS');
+  dm.WProdutos.SQL.Add(' WHERE NOMEPROD LIKE :NOMEPRODUTO');
+  dm.WProdutos.ParamByName('NOMEPRODUTO').AsString :=
+    '%' + edtPesquisa.Text + '%';
+  dm.WProdutos.Open();
 end;
 
 procedure TfrmAppBarzinho.edtPesquisaClick(Sender: TObject);
@@ -130,15 +142,28 @@ begin
   Compra := TCompra.Create('16/02/2021');
 end;
 
-procedure TfrmAppBarzinho.imCarrinhoClick(Sender: TObject);
+procedure TfrmAppBarzinho.ICardenetaClick(Sender: TObject);
 begin
-  ShowMessage(Compra.ExibirProdutosCompra(Lista));
+  ICardeneta.Visible := false;
+end;
+
+procedure TfrmAppBarzinho.imCarrinhoClick(Sender: TObject);
+// ShowMessage(Compra.ExibirProdutosCompra(Lista));
+var
+  LContador: Integer;
+  LProdutosLista: String;
+  LValorProdutoLista: String;
+begin
+  ICardeneta.Visible := true;
+  for LContador := 0 to Pred(Lista.Count) do
+    LProdutosLista := (Lista[LContador].FNomeProduto);
+  Memo1.Lines.Strings[LContador] := LProdutosLista;
 end;
 
 procedure TfrmAppBarzinho.lvProdutosItemClick(const Sender: TObject;
   const AItem: TListViewItem);
 var
-  LCodigoItemLV: integer;
+  LCodigoItemLV: Integer;
   LNomeProduto: String;
   LProdutoADD: TProdutos;
   LValorProduto: Currency;
@@ -153,7 +178,7 @@ begin
 
     procedure(const AResult: System.UITypes.TModalResult)
     var
-      LContador: integer;
+      LContador: Integer;
     begin
       case AResult of
         mrYES:
